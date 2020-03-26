@@ -1,0 +1,32 @@
+CREATE TABLE productos(
+productid SERIAL,
+nombre varchar(255),
+color varchar(255),
+medidas varchar(255),
+plaza1 varchar(5),
+plaza2 varchar(5),
+plaza3 varchar(5),
+PRIMARY KEY (productid)
+);
+
+
+CREATE TABLE admin(
+nombre varchar(255),
+contraseña varchar(255)
+);
+
+CREATE TABLE clientes(
+nombre varchar(255),
+apellido varchar(255),
+mail varchar(255) UNIQUE,
+PRIMARY KEY(mail)
+);
+
+CREATE TABLE solicitudes(
+mail varchar(255) REFERENCES clientes(mail),
+nombre varchar(255),
+apellido varchar(255),
+solicitud varchar (255)
+);
+
+INSERT INTO admin values('sariimativa','jacksito');

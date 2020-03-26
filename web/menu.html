@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Textiles Bina</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+</head>
+<body class = "todo">
+<div style="background-image: url('css/imagenes/navbar/front.jpg');" class="row">
+  <div class="col-sm-2">
+    <img style ="height: 48%; width: 48%;" src="css/imagenes/navbar/logo.png">
+  </div>
+  <div class="col-sm-10">
+    <a style = "float: right;" class="btn btn-primary" href="/supersecret" role="button">Admins</a>
+  </div>
+</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Textiles Bina</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogo
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/categoria/frazadas">Frazadas - Chales</a></li>
+          <li><a href="/categoria/camas">Cama - pieza</a></li>
+          <li><a href="/categoria/baño">Baño</a></li>
+          <li><a href="/categoria/infantil">Infantil</a></li>
+        </ul>
+      </li>
+      <li><a href="/QuienesSomos">Quienes somos</a></li>
+      <li><a href="/Contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col-sm-10">
+    <div class="slideshowContainer">
+      <img class="imageSlides" src="css/imagenes/favoritos/img1.jpg" >
+       <img class="imageSlides" src="css/imagenes/favoritos/img2.jpg" >
+       <img class="imageSlides" src="css/imagenes/favoritos/img3.jpg" >
+
+      <span id ="leftArrow" class="slideshowArrow">&#8249;</span>
+      <span id ="rightArrow" class="slideshowArrow">&#8250;</span>
+
+      <div class="slideshowCircles">
+
+        <span class="circle dot"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+      </div>
+    </div>
+  </div>
+  <div class = "col-sm-2">
+    <br>
+    <img class ="panel" src="css/imagenes/panel_derecha/proyecto_fosis.jpg">
+    <br>
+    <br>
+    <img  class = "panel" src="css/imagenes/panel_derecha/precios_mayorista.jpg">
+    <br>
+    <br>
+    <img class = "panel" src="css/imagenes/panel_derecha/distintas_calidades.jpg">
+    <br>
+    <br>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-sm-10">
+    <div class="column">
+      <img class = "favoritos" src="css/imagenes/favoritos/productosfavoritos/1.jpg">
+      <div style = "float:right;">
+      <p><b>Plumon</b></p>
+      <p>Precio : 6000</p>
+      <p>medidas: 1.5 - 2 plazas</p>
+    </div>
+    </div>
+    <div class="column">
+      <img class = "favoritos" src="css/imagenes/favoritos/productosfavoritos/2.jpg">
+      <div style = "float:right;">
+      <p><b>Frazada Jacquard</b></p>
+      <p>Precio : 6000</p>
+      <p>medidas: 1 - 1.5 - 2 plazas</p>
+    </div>
+  </div>
+    <div class="column">
+      <img class = "favoritos" src="css/imagenes/favoritos/productosfavoritos/3.jpg">
+      <div style = "float:right;">
+      <p><b>Plumon</b></p>
+      <p>Precio : 6000</p>
+      <p>medidas: 1.5 - 2 plazas</p>
+    </div>
+    </div>
+    <div class="column">
+      <img class = "favoritos" src="css/imagenes/favoritos/productosfavoritos/4.jpg">
+      <div style = "float:right;">
+      <p><b>Almohada</b></p>
+      <p>Precio : 6000</p>
+      <p>medidas: 0.45mts x 0.70mts</p>
+    </div>
+    </div>
+  </div>
+  <div class = "col-sm-2">
+      <img style = "display: block;margin-left: auto;margin-right: auto; height: 50%; width: 50%;" src="css/imagenes/navbar/fabricantes.jpg">
+  </div>
+</div>
+
+<script>
+  var imageSlides = document.getElementsByClassName('imageSlides');
+  var circles = document.getElementsByClassName('circle');
+  var leftArrow = document.getElementById('leftArrow');
+  var rightArrow = document.getElementById('rightArrow');
+  var counter = 0;
+
+  function hideImages() {
+    for (var i = 0; i < imageSlides.length; i++) {
+      imageSlides[i].classList.remove('visible');
+    }
+  }
+
+  function removeDots() {
+    for (var i = 0; i < imageSlides.length; i++) {
+      circles[i].classList.remove('dot');
+    }
+  }
+
+  function imageLoop() {
+    var currentImage = imageSlides[counter];
+    var currentDot = circles[counter];
+    currentImage.classList.add('visible');
+    removeDots();
+    currentDot.classList.add('dot');
+    counter++;
+  }
+
+  function arrowClick(e) {
+    var target = e.target;
+    if (target == leftArrow) {
+      clearInterval(imageSlideshowInterval);
+      hideImages();
+      removeDots();
+      if (counter == 1) {
+        counter = (imageSlides.length - 1);
+        imageLoop();
+        imageSlideshowInterval = setInterval(slideshow, 10000);
+      } else {
+        counter--;
+        counter--;
+        imageLoop();
+        imageSlideshowInterval = setInterval(slideshow, 10000);
+      }
+    }
+    else if (target == rightArrow) {
+      clearInterval(imageSlideshowInterval);
+      hideImages();
+      removeDots();
+      if (counter == imageSlides.length) {
+        counter = 0;
+        imageLoop();
+        imageSlideshowInterval = setInterval(slideshow, 10000);
+      } else {
+        imageLoop();
+        imageSlideshowInterval = setInterval(slideshow, 10000);
+      }
+    }
+  }
+
+  leftArrow.addEventListener('click', arrowClick);
+  rightArrow.addEventListener('click', arrowClick);
+
+  function slideshow() {
+    if (counter < imageSlides.length) {
+      imageLoop();
+    } else {
+      counter = 0;
+      hideImages();
+      imageLoop();
+    }
+  }
+
+  setTimeout(slideshow, 1000);
+  var imageSlideshowInterval = setInterval(slideshow, 10000);
+
+</script>
+
+</body>
+
+
+</html>
